@@ -1,0 +1,4 @@
+# Docs: https://eslint.org/docs/latest/use/configure/ignore
+build/
+.docusaurus/
+node_modules/
