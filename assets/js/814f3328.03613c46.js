@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkfrontend=globalThis.webpackChunkfrontend||[]).push([[472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome to the Future of Robotics!","permalink":"/Physical-AI-Humanoid-Robotics/blog/welcome-physical-ai","unlisted":false,"date":"2025-12-15T00:00:00.000Z"}]}')}}]);

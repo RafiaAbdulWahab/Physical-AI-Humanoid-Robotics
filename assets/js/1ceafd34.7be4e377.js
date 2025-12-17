@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkfrontend=globalThis.webpackChunkfrontend||[]).push([[642],{4845:a=>{a.exports=JSON.parse('{"authors":[{"name":"Rafia Abdul Wahab","title":"Creator of the Physical AI Textbook","url":"https://github.com/RafiaAbdulWahab","imageURL":"https://github.com/RafiaAbdulWahab.png","key":"rafia","page":null,"count":1}]}')}}]);
