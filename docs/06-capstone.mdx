@@ -1,5 +1,49 @@
 ---
-title: "Capstone: The Autonomous Humanoid"
+sidebar_position: 6
+title: 'Capstone: The Autonomous Humanoid'
 ---
 
-Final Project: A simulated robot receives a voice command, plans a path, navigates obstacles, and manipulates an object; Integration: Combining ROS 2, Isaac Sim, and VLA models.
+# Capstone: The Autonomous Humanoid
+
+This is the final project where you will combine everything you have learned throughout this course. The goal is to build a simulated **Autonomous Humanoid** that can understand a voice command, perceive its environment, plan a path, and manipulate an object.
+
+### The Challenge
+
+Your task is to create a complete end-to-end pipeline that performs the following sequence:
+
+1.  **Receive a Voice Command:** The system should listen for a command like, "Find the blue cube and place it on the green circle."
+2.  **Transcribe and Plan:** The voice command will be converted to text (using Whisper) and then sent to an LLM to generate a step-by-step plan.
+3.  **Navigate and Perceive:** The robot must navigate to the target area, avoiding obstacles using Nav2. It will then use its camera to identify the correct object (the blue cube) using computer vision.
+4.  **Manipulate:** The robot must accurately calculate how to grasp the cube, pick it up with its arm, and carry it to the destination (the green circle).
+5.  **Place and Complete:** Finally, it must gently place the cube at the target location and return to a neutral stance.
+
+### The Workflow: A Summary of Your Skills
+
+Your project will demonstrate your mastery of the entire stack:
+
+- **Frontend (Voice Input):** A simple interface to capture the voice command.
+- **VLA (The Brain):**
+  - **Whisper** for Speech-to-Text.
+  - An **LLM** for cognitive planning.
+- **ROS 2 (The Nervous System):**
+  - Your Python script will translate the LLM's plan into ROS 2 actions (e.g., `navigate_to_goal`, `pick_up_object`).
+- **NVIDIA Isaac Sim (The World):**
+  - The entire task will be performed in a realistic virtual environment you design.
+  - The robot's perception will be based on the simulated camera and LiDAR data from Isaac Sim.
+
+### Example Project Flowchart
+
+```mermaid
+graph TD
+    A[Voice Command] --> B{Whisper API};
+    B --> C[Text: "Get the cube"];
+    C --> D{LLM Planner};
+    D --> E[Plan: 1. navigate(table) 2. grasp(cube)];
+    E --> F[ROS 2 Action Client];
+    F -- navigate_to_goal --> G[Nav2 in Isaac Sim];
+    G -- Reaches Goal --> F;
+    F -- pick_up_object --> H[Manipulation in Isaac Sim];
+    H -- Success --> I[Task Complete];
+```
+
+Successfully completing this capstone project will not only solidify your understanding of Physical AI but also provide you with a powerful portfolio piece demonstrating your ability to build intelligent, embodied systems.

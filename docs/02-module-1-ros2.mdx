@@ -1,5 +1,46 @@
 ---
-title: "Module 1: The Robotic Nervous System (ROS 2)"
+sidebar_position: 2
+title: 'Module 1: The Robotic Nervous System (ROS 2)'
 ---
 
-Focus: Middleware for robot control; Core Concepts: ROS 2 Nodes, Topics, Services, and Actions; URDF: Unified Robot Description Format for humanoids; Bridge: Connecting Python Agents to ROS using rclpy.
+# Module 1: The Robotic Nervous System (ROS 2)
+
+Welcome to the foundational module of our course! In this section, we will explore the **Robot Operating System 2 (ROS 2)**, the middleware that acts as the central nervous system for our humanoid robots.
+
+
+### Focus: Middleware for Robot Control
+
+Just like a nervous system connects the brain to the muscles, ROS 2 connects our AI algorithms (the "brain") to the robot's motors and sensors (the "body"). It is not an operating system in the traditional sense, but a flexible framework for writing robot software.
+
+### Core Concepts You Will Master
+
+1.  **ROS 2 Nodes:**
+    A node is an executable that performs a single, modular purpose (e.g., one node for controlling a wheel, one node for processing camera data).
+
+2.  **Topics:**
+    Nodes communicate with each other by publishing messages to "topics". For example, a camera node might publish images to an `/image_data` topic, and a computer vision node can subscribe to this topic to receive the images.
+
+3.  **Services:**
+    While topics are for continuous data streams, services are used for request/response communication. For example, a node might request a "service" to calculate a path, and the service provider node will return the calculated path.
+
+4.  **Actions:**
+    Actions are for long-running tasks that provide feedback, like navigating to a goal. You can send a goal, receive feedback (e.g., "distance remaining"), and get a final result.
+
+### URDF: Describing the Robot's Body
+
+**URDF (Unified Robot Description Format)** is an XML file used to model the robot's physical structure. We will learn how to define:
+- **Links:** The rigid parts of the robot (e.g., arm, leg).
+- **Joints:** How the links are connected (e.g., revolute, prismatic).
+
+```xml title="Example of a simple URDF joint"
+<joint name="arm_joint" type="revolute">
+  <parent link="torso"/>
+  <child link="upper_arm"/>
+  <origin xyz="0 0 0.5"/>
+  <axis xyz="0 1 0"/>
+</joint>
+```
+
+### Bridge: Connecting Python to ROS
+
+Finally, we will use the `rclpy` library to write our AI agents in Python and connect them to ROS 2 controllers, allowing our code to send commands and receive data from the robot.

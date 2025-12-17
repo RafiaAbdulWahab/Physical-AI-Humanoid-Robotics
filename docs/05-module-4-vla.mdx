@@ -1,5 +1,55 @@
 ---
-title: "Module 4: Vision-Language-Action (VLA)"
+sidebar_position: 5
+title: 'Module 4: Vision-Language-Action (VLA)'
 ---
 
-Convergence of LLMs and Robotics; Voice-to-Action: Using OpenAI Whisper for voice commands; Cognitive Planning: Using LLMs to translate natural language into ROS 2 actions.
+# Module 4: Vision-Language-Action (VLA)
+
+This is where the magic happens! In this module, we will explore **Vision-Language-Action (VLA) models**, which represent the convergence of Large Language Models (LLMs) like GPT and the field of Robotics.
+
+### Focus: The Convergence of LLMs and Robotics
+
+The goal of VLA is to enable robots to understand and execute commands given in natural human language. Instead of writing complex code for every task, we can simply *tell* the robot what to do.
+
+### Core Concepts
+
+1.  **Voice-to-Action: Using OpenAI Whisper**
+    We will start by capturing voice commands using a microphone. The audio will be transcribed into text using **OpenAI Whisper**, a state-of-the-art speech-to-text model. This is the "Language" part of VLA.
+
+2.  **Cognitive Planning: Using LLMs**
+    Once we have the text command (e.g., "Please bring me the red apple from the table"), we will feed it to a Large Language Model. The LLM's job is to act as a "Cognitive Planner", breaking down the high-level command into a sequence of simple, actionable steps that a robot can understand.
+
+    For example, "Bring me the red apple" might be broken down into:
+    - `Step 1: Navigate to the table.`
+    - `Step 2: Use the camera to locate the red apple (Vision).`
+    - `Step 3: Calculate the grasping position.`
+    - `Step 4: Move the arm and pick up the apple.`
+    - `Step 5: Navigate back to the user.`
+
+3.  **Translating Plans into ROS 2 Actions**
+    Finally, we will write a Python script that takes the step-by-step plan from the LLM and translates each step into a specific **ROS 2 Action** or **Service call**. This is the "Action" part of VLA, where the digital plan becomes a physical movement.
+
+### Example: A Simple LLM Prompt for Planning
+
+We can use an LLM API to generate a plan. Here's what a prompt might look like:
+
+```json title="Example Prompt to an LLM"
+{
+  "role": "system",
+  "content": "You are a helpful robot assistant. Convert the user's command into a numbered list of simple robot actions from this list: [navigate(location), find(object), grasp(object), place(object, location)]."
+}
+```
+```json title="User Command"
+{
+  "role": "user",
+  "content": "Clean the room by putting the toy car in the box."
+}
+```
+```json title="Expected LLM Response"
+{
+  "role": "assistant",
+  "content": "1. find(toy car)\n2. grasp(toy car)\n3. navigate(box)\n4. place(toy car, box)"
+}
+```
+
+This module connects the world of conversational AI with physical robotics, allowing for truly natural and intuitive human-robot interaction.

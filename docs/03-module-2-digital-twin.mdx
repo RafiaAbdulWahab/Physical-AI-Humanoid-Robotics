@@ -1,5 +1,63 @@
 ---
-title: "Module 2: The Digital Twin (Gazebo & Unity)"
+sidebar_position: 3
+title: 'Module 2: The Digital Twin (Gazebo & Unity)'
 ---
 
-Gazebo: Physics simulation, gravity, and collisions; Unity: High-fidelity rendering and human-robot interaction; Sensors: Simulating LiDAR, Depth Cameras, and IMUs.
+# Module 2: The Digital Twin (Gazebo & Unity)
+
+In this module, we will create a "Digital Twin"—a virtual replica of our robot and its environment. This allows us to test and train our AI in a safe, simulated world before deploying it to a physical robot.
+
+### Focus: Physics Simulation and Environment Building
+
+We will use two powerful tools for this:
+
+1.  **Gazebo:** For realistic physics simulation.
+2.  **Unity:** For high-fidelity rendering and advanced interactions.
+
+### What You'll Learn in Gazebo
+
+Gazebo is a robust physics simulator that helps us model the real world. We will focus on:
+- **Simulating Physics:** Understanding how gravity, friction, and mass affect the robot.
+- **Collisions:** Detecting when the robot bumps into objects. We will learn to design worlds with walls, obstacles, and other items.
+- **Environment Building:** Creating custom worlds for the robot to navigate.
+
+```xml title="Example of adding a box in a Gazebo world file"
+<world name="default">
+  <include>
+    <uri>model://ground_plane</uri>
+  </include>
+  <include>
+    <uri>model://sun</uri>
+  </include>
+  <model name="box">
+    <pose>0 2 0.5 0 0 0</pose>
+    <link name="link">
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>1 1 1</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>1 1 1</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</world>
+```
+
+### High-Fidelity Rendering in Unity
+
+While Gazebo is great for physics, Unity excels at creating visually stunning and interactive environments. We will explore:
+- **Photorealistic Graphics:** Making the simulated world look as real as possible.
+- **Human-Robot Interaction:** Creating scenarios where virtual humans can interact with our robot.
+
+### Simulating Sensors
+
+A robot is blind without its sensors. We will learn to simulate the most critical sensors:
+- **LiDAR:** To measure distances using l
